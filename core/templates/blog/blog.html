@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FC Blog</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: sans-serif;
+        line-height: 1.6;
+        background-color: #121212;
+        color: #e2e2e2;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        justify-content: space-between;
+      }
+
+      header {
+        background-color: #333;
+        color: #fcba11;
+        padding: 20px 0;
+      }
+
+      header .logo {
+        text-align: center;
+      }
+
+      header nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      header nav ul li {
+        margin: 0 15px;
+      }
+
+      header nav span {
+        color: #fcba11;
+        font-weight: 700;
+        font-size: 20px;
+      }
+
+      header nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      header nav ul li a:hover {
+        text-decoration: underline;
+      }
+
+      main {
+        padding: 20px;
+        max-width: 1024px;
+        margin: 20px auto;
+        background-color: #333;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      main .subtitle {
+        text-align: center;
+        color: #fcba11;
+        background-color: #333;
+      }
+
+      main .post {
+        margin-bottom: 40px;
+      }
+
+      main .post h2 {
+        color: #f7f7f7;
+        margin-bottom: 10px;
+      }
+
+      main .post .date {
+        color: #b6b6b6;
+        font-size: 0.9em;
+        margin-bottom: 15px;
+      }
+
+      main .post p {
+        margin-bottom: 15px;
+      }
+
+      main .post .read-more:hover {
+        background-color: #555;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #333;
+        color: #fff;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">
+        <h1>FC Blog</h1>
+      </div>
+      <nav>
+        <ul>
+          <span>Tags:</span>
+          {% for tag in tags %}
+          <li><a href="#">{{tag.name}}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div>
+        {% for post in posts %}
+        <section class="post">
+          <h2>{{post.title}}</h2>
+          <p class="date">Publicado em: {{post.created_at}}</p>
+          <p>{{post.content}}</p>
+        </section>
+        {% endfor %}
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 - FC Blog. Todos os direitos reservados.</p>
+    </footer>
+  </body>
+</html>
